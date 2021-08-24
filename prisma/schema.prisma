@@ -1,11 +1,115 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider = "prisma-client-js"
+}
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
+model annotation_groups {
+  id                                                                 Int             @id @default(autoincrement())
+  name                                                               String?
+  annotation_type                                                    String?
+  upload_date                                                        DateTime?       @db.Timestamp(6)
+  num_annotations                                                    Int?
+  model                                                              String?
+  map_score                                                          Float?          @db.Real
+  threshold                                                          Float?          @db.Real
+  output_group_id                                                    Int?
+  output_groups_annotation_groups_output_group_idTooutput_groups     output_groups?  @relation("annotation_groups_output_group_idTooutput_groups", fields: [output_group_id], references: [id])
+  annotations                                                        annotations[]
+  output_groups_annotation_groupsTooutput_groups_annotation_group_id output_groups[] @relation("annotation_groupsTooutput_groups_annotation_group_id")
+}
+
+model annotations {
+  id                  Int                @id @default(autoincrement())
+  filename            String?
+  category            String?
+  score               Float?
+  left                Float?
+  top                 Float?
+  bottom              Float?
+  right               Float?
+  annotation_group_id Int?
+  property_id         Int?
+  image_id            Int?
+  annotation_groups   annotation_groups? @relation(fields: [annotation_group_id], references: [id])
+  images              images?            @relation(fields: [image_id], references: [id])
+  properties          properties?        @relation(fields: [property_id], references: [id])
+}
+
+model image_groups {
+  id                                                        Int               @id @default(autoincrement())
+  output_group_id                                           Int?
+  name                                                      String?
+  num_images                                                Int?
+  output_groups_image_groups_output_group_idTooutput_groups output_groups?    @relation("image_groups_output_group_idTooutput_groups", fields: [output_group_id], references: [id])
+  images                                                    images[]
+  input_groups                                              input_groups[]
+  output_groups_image_groupsTooutput_groups_image_group_id  output_groups[]   @relation("image_groupsTooutput_groups_image_group_id")
+  property_groups                                           property_groups[]
+}
+
+model images {
+  id             Int           @id @default(autoincrement())
+  property_id    Int?
+  image_group_id Int?
+  filename       String?
+  image          Int?          @unique @db.Oid
+  extension_type String?
+  image_groups   image_groups? @relation(fields: [image_group_id], references: [id])
+  properties     properties?   @relation(fields: [property_id], references: [id])
+  annotations    annotations[]
+}
+
+model models {
+  id   Int     @id @default(autoincrement())
+  type String?
+  name String?
+}
+
+model output_groups {
+  id                                                                     Int                 @id @default(autoincrement())
+  annotation_group_id                                                    Int?
+  image_group_id                                                         Int?
+  annotation_groups_annotation_groupsTooutput_groups_annotation_group_id annotation_groups?  @relation("annotation_groupsTooutput_groups_annotation_group_id", fields: [annotation_group_id], references: [id])
+  image_groups_image_groupsTooutput_groups_image_group_id                image_groups?       @relation("image_groupsTooutput_groups_image_group_id", fields: [image_group_id], references: [id])
+  annotation_groups_annotation_groups_output_group_idTooutput_groups     annotation_groups[] @relation("annotation_groups_output_group_idTooutput_groups")
+  image_groups_image_groups_output_group_idTooutput_groups               image_groups[]      @relation("image_groups_output_group_idTooutput_groups")
+}
+
+model properties {
+  first_name  String?
+  last_name   String?
+  address     String?
+  city        String?
+  state       String?
+  zip         String?
+  phone1      String?
+  phone2      String?
+  email       String?
+  id          Int           @id @default(autoincrement())
+  annotations annotations[]
+  images      images[]
+}
+
+model input_groups {
+  id                 Int              @id @unique
+  property_group_id  Int?
+  image_group_id     Int?
+  inference_settings String?
+  created_date       DateTime?        @db.Timestamp(6)
+  image_groups       image_groups?    @relation(fields: [image_group_id], references: [id])
+  property_groups    property_groups? @relation(fields: [property_group_id], references: [id])
+}
+
+model property_groups {
+  id             Int            @id @unique @default(autoincrement())
+  name           String?
+  upload_date    DateTime       @unique @db.Timestamp(6)
+  towns          String?
+  image_group_id Int?
+  image_groups   image_groups?  @relation(fields: [image_group_id], references: [id])
+  input_groups   input_groups[]
 }
