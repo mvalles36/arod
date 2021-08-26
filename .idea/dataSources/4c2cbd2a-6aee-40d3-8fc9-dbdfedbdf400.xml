@@ -812,50 +812,22 @@ sequence|table|16526|16491|1
 sequence|table|16538|16540|1
 </Relations>
     </database>
-    <database id="3" parent="1" name="braulio-rodriguez">
-      <ObjectId>16385</ObjectId>
-      <Owner>braulio-rodriguez</Owner>
-    </database>
-    <database id="4" parent="1" name="postgres">
+    <database id="3" parent="1" name="postgres">
       <ObjectId>13707</ObjectId>
       <Comment>default administrative connection database</Comment>
       <Owner>postgres</Owner>
     </database>
-    <role id="5" parent="1" name="braulio-rodriguez">
-      <ObjectId>16384</ObjectId>
-      <CreateDb>1</CreateDb>
-      <CreateRole>1</CreateRole>
-      <CanLogin>1</CanLogin>
-      <SuperRole>1</SuperRole>
-    </role>
-    <role id="6" parent="1" name="pg_execute_server_program">
-      <ObjectId>4571</ObjectId>
-    </role>
-    <role id="7" parent="1" name="pg_monitor">
-      <ObjectId>3373</ObjectId>
-      <RoleGrants>3374
-3375
-3377</RoleGrants>
-    </role>
-    <role id="8" parent="1" name="pg_read_all_settings">
-      <ObjectId>3374</ObjectId>
-    </role>
-    <role id="9" parent="1" name="pg_read_all_stats">
-      <ObjectId>3375</ObjectId>
-    </role>
-    <role id="10" parent="1" name="pg_read_server_files">
-      <ObjectId>4569</ObjectId>
-    </role>
-    <role id="11" parent="1" name="pg_signal_backend">
+    <database id="4" parent="1" name="braulio-rodriguez">
+      <ObjectId>16385</ObjectId>
+      <Owner>braulio-rodriguez</Owner>
+    </database>
+    <role id="5" parent="1" name="pg_signal_backend">
       <ObjectId>4200</ObjectId>
     </role>
-    <role id="12" parent="1" name="pg_stat_scan_tables">
-      <ObjectId>3377</ObjectId>
+    <role id="6" parent="1" name="pg_read_server_files">
+      <ObjectId>4569</ObjectId>
     </role>
-    <role id="13" parent="1" name="pg_write_server_files">
-      <ObjectId>4570</ObjectId>
-    </role>
-    <role id="14" parent="1" name="postgres">
+    <role id="7" parent="1" name="postgres">
       <ObjectId>10</ObjectId>
       <CreateDb>1</CreateDb>
       <CreateRole>1</CreateRole>
@@ -863,6 +835,34 @@ sequence|table|16538|16540|1
       <SuperRole>1</SuperRole>
       <Replication>1</Replication>
       <BypassRls>1</BypassRls>
+    </role>
+    <role id="8" parent="1" name="pg_write_server_files">
+      <ObjectId>4570</ObjectId>
+    </role>
+    <role id="9" parent="1" name="pg_execute_server_program">
+      <ObjectId>4571</ObjectId>
+    </role>
+    <role id="10" parent="1" name="pg_read_all_stats">
+      <ObjectId>3375</ObjectId>
+    </role>
+    <role id="11" parent="1" name="pg_monitor">
+      <ObjectId>3373</ObjectId>
+      <RoleGrants>3374
+3375
+3377</RoleGrants>
+    </role>
+    <role id="12" parent="1" name="braulio-rodriguez">
+      <ObjectId>16384</ObjectId>
+      <CreateDb>1</CreateDb>
+      <CreateRole>1</CreateRole>
+      <CanLogin>1</CanLogin>
+      <SuperRole>1</SuperRole>
+    </role>
+    <role id="13" parent="1" name="pg_read_all_settings">
+      <ObjectId>3374</ObjectId>
+    </role>
+    <role id="14" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
     </role>
     <tablespace id="15" parent="1" name="pg_default">
       <ObjectId>1663</ObjectId>
@@ -874,10 +874,13 @@ sequence|table|16538|16540|1
       <Owner>postgres</Owner>
       <StateNumber>1</StateNumber>
     </tablespace>
-    <schema id="17" parent="2" name="information_schema">
-      <ObjectId>13423</ObjectId>
-      <StateNumber>292</StateNumber>
+    <schema id="17" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <Comment>standard public schema</Comment>
+      <StateNumber>286</StateNumber>
       <Owner>postgres</Owner>
+      <IntrospectionStateNumber>785</IntrospectionStateNumber>
+      <Current>1</Current>
     </schema>
     <schema id="18" parent="2" name="pg_catalog">
       <ObjectId>11</ObjectId>
@@ -885,13 +888,10 @@ sequence|table|16538|16540|1
       <StateNumber>285</StateNumber>
       <Owner>postgres</Owner>
     </schema>
-    <schema id="19" parent="2" name="public">
-      <ObjectId>2200</ObjectId>
-      <Comment>standard public schema</Comment>
-      <StateNumber>286</StateNumber>
+    <schema id="19" parent="2" name="information_schema">
+      <ObjectId>13423</ObjectId>
+      <StateNumber>292</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>785</IntrospectionStateNumber>
-      <Current>1</Current>
     </schema>
     <extension id="20" parent="2" name="plpgsql">
       <ObjectId>13693</ObjectId>
@@ -935,13 +935,13 @@ sequence|table|16538|16540|1
       <ValidatorName>fmgr_sql_validator</ValidatorName>
       <ValidatorSchema>pg_catalog</ValidatorSchema>
     </language>
-    <access-method id="25" parent="2" name="brin">
-      <ObjectId>3580</ObjectId>
-      <Comment>block range index (BRIN) access method</Comment>
+    <access-method id="25" parent="2" name="heap">
+      <ObjectId>2</ObjectId>
+      <Comment>heap table access method</Comment>
       <StateNumber>1</StateNumber>
-      <Type>index</Type>
-      <Handler>pg_catalog.brinhandler</Handler>
-      <HandlerId>335</HandlerId>
+      <Type>table</Type>
+      <Handler>pg_catalog.heap_tableam_handler</Handler>
+      <HandlerId>3</HandlerId>
     </access-method>
     <access-method id="26" parent="2" name="btree">
       <ObjectId>403</ObjectId>
@@ -951,13 +951,13 @@ sequence|table|16538|16540|1
       <Handler>pg_catalog.bthandler</Handler>
       <HandlerId>330</HandlerId>
     </access-method>
-    <access-method id="27" parent="2" name="gin">
-      <ObjectId>2742</ObjectId>
-      <Comment>GIN index access method</Comment>
+    <access-method id="27" parent="2" name="hash">
+      <ObjectId>405</ObjectId>
+      <Comment>hash index access method</Comment>
       <StateNumber>1</StateNumber>
       <Type>index</Type>
-      <Handler>pg_catalog.ginhandler</Handler>
-      <HandlerId>333</HandlerId>
+      <Handler>pg_catalog.hashhandler</Handler>
+      <HandlerId>331</HandlerId>
     </access-method>
     <access-method id="28" parent="2" name="gist">
       <ObjectId>783</ObjectId>
@@ -967,23 +967,15 @@ sequence|table|16538|16540|1
       <Handler>pg_catalog.gisthandler</Handler>
       <HandlerId>332</HandlerId>
     </access-method>
-    <access-method id="29" parent="2" name="hash">
-      <ObjectId>405</ObjectId>
-      <Comment>hash index access method</Comment>
+    <access-method id="29" parent="2" name="gin">
+      <ObjectId>2742</ObjectId>
+      <Comment>GIN index access method</Comment>
       <StateNumber>1</StateNumber>
       <Type>index</Type>
-      <Handler>pg_catalog.hashhandler</Handler>
-      <HandlerId>331</HandlerId>
+      <Handler>pg_catalog.ginhandler</Handler>
+      <HandlerId>333</HandlerId>
     </access-method>
-    <access-method id="30" parent="2" name="heap">
-      <ObjectId>2</ObjectId>
-      <Comment>heap table access method</Comment>
-      <StateNumber>1</StateNumber>
-      <Type>table</Type>
-      <Handler>pg_catalog.heap_tableam_handler</Handler>
-      <HandlerId>3</HandlerId>
-    </access-method>
-    <access-method id="31" parent="2" name="spgist">
+    <access-method id="30" parent="2" name="spgist">
       <ObjectId>4000</ObjectId>
       <Comment>SP-GiST index access method</Comment>
       <StateNumber>1</StateNumber>
@@ -991,106 +983,114 @@ sequence|table|16538|16540|1
       <Handler>pg_catalog.spghandler</Handler>
       <HandlerId>334</HandlerId>
     </access-method>
-    <sequence id="32" parent="19" name="annotation_groups_id_seq">
+    <access-method id="31" parent="2" name="brin">
+      <ObjectId>3580</ObjectId>
+      <Comment>block range index (BRIN) access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Type>index</Type>
+      <Handler>pg_catalog.brinhandler</Handler>
+      <HandlerId>335</HandlerId>
+    </access-method>
+    <sequence id="32" parent="17" name="annotation_groups_id_seq">
       <ObjectId>16387</ObjectId>
       <Owner>braulio-rodriguez</Owner>
       <StateNumber>494</StateNumber>
       <DataType>integer|0s</DataType>
     </sequence>
-    <sequence id="33" parent="19" name="annotations_id_seq">
-      <ObjectId>16406</ObjectId>
-      <Owner>braulio-rodriguez</Owner>
-      <StateNumber>514</StateNumber>
-      <DataType>integer|0s</DataType>
-    </sequence>
-    <sequence id="34" parent="19" name="image_groups_id_seq">
-      <ObjectId>16445</ObjectId>
-      <Owner>braulio-rodriguez</Owner>
-      <StateNumber>571</StateNumber>
-      <DataType>integer|0s</DataType>
-    </sequence>
-    <sequence id="35" parent="19" name="images_id_seq">
-      <ObjectId>16477</ObjectId>
-      <Owner>braulio-rodriguez</Owner>
-      <StateNumber>608</StateNumber>
-      <DataType>integer|0s</DataType>
-    </sequence>
-    <sequence id="36" parent="19" name="models_id_seq">
+    <sequence id="33" parent="17" name="models_id_seq">
       <ObjectId>16526</ObjectId>
       <Owner>braulio-rodriguez</Owner>
       <StateNumber>702</StateNumber>
       <DataType>integer|0s</DataType>
     </sequence>
-    <sequence id="37" parent="19" name="output_groups_id_seq">
+    <sequence id="34" parent="17" name="annotations_id_seq">
+      <ObjectId>16406</ObjectId>
+      <Owner>braulio-rodriguez</Owner>
+      <StateNumber>514</StateNumber>
+      <DataType>integer|0s</DataType>
+    </sequence>
+    <sequence id="35" parent="17" name="output_groups_id_seq">
       <ObjectId>16437</ObjectId>
       <Owner>braulio-rodriguez</Owner>
       <StateNumber>561</StateNumber>
       <DataType>integer|0s</DataType>
     </sequence>
-    <sequence id="38" parent="19" name="properties_id_seq">
-      <ObjectId>16513</ObjectId>
+    <sequence id="36" parent="17" name="image_groups_id_seq">
+      <ObjectId>16445</ObjectId>
       <Owner>braulio-rodriguez</Owner>
-      <StateNumber>690</StateNumber>
+      <StateNumber>571</StateNumber>
       <DataType>integer|0s</DataType>
     </sequence>
-    <sequence id="39" parent="19" name="property_groups_id_seq">
+    <sequence id="37" parent="17" name="images_id_seq">
+      <ObjectId>16477</ObjectId>
+      <Owner>braulio-rodriguez</Owner>
+      <StateNumber>608</StateNumber>
+      <DataType>integer|0s</DataType>
+    </sequence>
+    <sequence id="38" parent="17" name="property_groups_id_seq">
       <ObjectId>16538</ObjectId>
       <Owner>braulio-rodriguez</Owner>
       <StateNumber>709</StateNumber>
       <DataType>integer|0s</DataType>
     </sequence>
-    <table id="40" parent="19" name="annotation_groups">
+    <sequence id="39" parent="17" name="properties_id_seq">
+      <ObjectId>16513</ObjectId>
+      <Owner>braulio-rodriguez</Owner>
+      <StateNumber>690</StateNumber>
+      <DataType>integer|0s</DataType>
+    </sequence>
+    <table id="40" parent="17" name="annotation_groups">
       <ObjectId>16389</ObjectId>
       <Owner>braulio-rodriguez</Owner>
       <StateNumber>596</StateNumber>
       <AccessMethodId>2</AccessMethodId>
     </table>
-    <table id="41" parent="19" name="annotations">
+    <table id="41" parent="17" name="annotations">
       <ObjectId>16408</ObjectId>
       <Owner>braulio-rodriguez</Owner>
       <StateNumber>725</StateNumber>
       <AccessMethodId>2</AccessMethodId>
     </table>
-    <table id="42" parent="19" name="image_groups">
-      <ObjectId>16447</ObjectId>
-      <Owner>braulio-rodriguez</Owner>
-      <StateNumber>774</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-    </table>
-    <table id="43" parent="19" name="images">
-      <ObjectId>16479</ObjectId>
-      <Owner>braulio-rodriguez</Owner>
-      <StateNumber>729</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-    </table>
-    <table id="44" parent="19" name="input_groups">
-      <ObjectId>16571</ObjectId>
-      <Owner>braulio-rodriguez</Owner>
-      <StateNumber>770</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-    </table>
-    <table id="45" parent="19" name="models">
-      <ObjectId>16491</ObjectId>
-      <Owner>braulio-rodriguez</Owner>
-      <StateNumber>703</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-    </table>
-    <table id="46" parent="19" name="output_groups">
+    <table id="42" parent="17" name="output_groups">
       <ObjectId>16439</ObjectId>
       <Owner>braulio-rodriguez</Owner>
       <StateNumber>581</StateNumber>
       <AccessMethodId>2</AccessMethodId>
     </table>
-    <table id="47" parent="19" name="properties">
+    <table id="43" parent="17" name="image_groups">
+      <ObjectId>16447</ObjectId>
+      <Owner>braulio-rodriguez</Owner>
+      <StateNumber>774</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+    </table>
+    <table id="44" parent="17" name="images">
+      <ObjectId>16479</ObjectId>
+      <Owner>braulio-rodriguez</Owner>
+      <StateNumber>729</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+    </table>
+    <table id="45" parent="17" name="models">
+      <ObjectId>16491</ObjectId>
+      <Owner>braulio-rodriguez</Owner>
+      <StateNumber>703</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+    </table>
+    <table id="46" parent="17" name="property_groups">
+      <ObjectId>16540</ObjectId>
+      <Owner>braulio-rodriguez</Owner>
+      <StateNumber>778</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+    </table>
+    <table id="47" parent="17" name="properties">
       <ObjectId>16499</ObjectId>
       <Owner>braulio-rodriguez</Owner>
       <StateNumber>721</StateNumber>
       <AccessMethodId>2</AccessMethodId>
     </table>
-    <table id="48" parent="19" name="property_groups">
-      <ObjectId>16540</ObjectId>
+    <table id="48" parent="17" name="input_groups">
+      <ObjectId>16571</ObjectId>
       <Owner>braulio-rodriguez</Owner>
-      <StateNumber>778</StateNumber>
+      <StateNumber>770</StateNumber>
       <AccessMethodId>2</AccessMethodId>
     </table>
     <column id="49" parent="40" name="id">
@@ -1295,274 +1295,23 @@ sequence|table|16538|16540|1
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>571</StateNumber>
-      <DefaultExpression>nextval(&apos;image_groups_id_seq&apos;::regclass)</DefaultExpression>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="78" parent="42" name="output_group_id">
-      <Position>2</Position>
-      <DataType>integer|0s</DataType>
-      <StateNumber>571</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="79" parent="42" name="name">
-      <Position>3</Position>
-      <DataType>text|0s</DataType>
-      <StateNumber>571</StateNumber>
-      <TypeId>25</TypeId>
-    </column>
-    <column id="80" parent="42" name="num_images">
-      <Position>5</Position>
-      <DataType>integer|0s</DataType>
-      <StateNumber>774</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <index id="81" parent="42" name="image_groups_pk">
-      <ObjectId>16455</ObjectId>
-      <StateNumber>571</StateNumber>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-      <Primary>1</Primary>
-      <CollationIds>0</CollationIds>
-      <ClassIds>1978</ClassIds>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="82" parent="42" name="image_groups_pk">
-      <ObjectId>16456</ObjectId>
-      <StateNumber>571</StateNumber>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>image_groups_pk</UnderlyingIndexName>
-    </key>
-    <foreign-key id="83" parent="42" name="fk_output_group_id">
-      <ObjectId>16472</ObjectId>
-      <StateNumber>604</StateNumber>
-      <ColNames>output_group_id</ColNames>
-      <RefTableId>16439</RefTableId>
-      <RefColPositions>1</RefColPositions>
-      <RefTableName>output_groups</RefTableName>
-      <RefKeyName>output_groups_pk</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="84" parent="43" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>608</StateNumber>
-      <DefaultExpression>nextval(&apos;images_id_seq&apos;::regclass)</DefaultExpression>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="85" parent="43" name="property_id">
-      <Position>2</Position>
-      <DataType>integer|0s</DataType>
-      <StateNumber>632</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="86" parent="43" name="image_group_id">
-      <Position>3</Position>
-      <DataType>integer|0s</DataType>
-      <StateNumber>636</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="87" parent="43" name="filename">
-      <Position>4</Position>
-      <DataType>text|0s</DataType>
-      <StateNumber>608</StateNumber>
-      <TypeId>25</TypeId>
-    </column>
-    <column id="88" parent="43" name="image">
-      <Position>5</Position>
-      <DataType>oid|0s</DataType>
-      <StateNumber>640</StateNumber>
-      <TypeId>26</TypeId>
-    </column>
-    <column id="89" parent="43" name="extension_type">
-      <Position>6</Position>
-      <DataType>text|0s</DataType>
-      <StateNumber>644</StateNumber>
-      <TypeId>25</TypeId>
-    </column>
-    <index id="90" parent="43" name="images_pk">
-      <ObjectId>16486</ObjectId>
-      <StateNumber>608</StateNumber>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-      <Primary>1</Primary>
-      <CollationIds>0</CollationIds>
-      <ClassIds>1978</ClassIds>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <index id="91" parent="43" name="images_image_uindex">
-      <ObjectId>16490</ObjectId>
-      <StateNumber>653</StateNumber>
-      <ColNames>image</ColNames>
-      <Unique>1</Unique>
-      <CollationIds>0</CollationIds>
-      <ClassIds>1981</ClassIds>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="92" parent="43" name="images_pk">
-      <ObjectId>16487</ObjectId>
-      <StateNumber>608</StateNumber>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>images_pk</UnderlyingIndexName>
-    </key>
-    <foreign-key id="93" parent="43" name="property_id">
-      <ObjectId>16566</ObjectId>
-      <StateNumber>745</StateNumber>
-      <ColNames>property_id</ColNames>
-      <RefTableId>16499</RefTableId>
-      <RefColPositions>10</RefColPositions>
-      <RefTableName>properties</RefTableName>
-      <RefKeyName>properties_pk</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="94" parent="43" name="image_group_id">
-      <ObjectId>16561</ObjectId>
-      <StateNumber>741</StateNumber>
-      <ColNames>image_group_id</ColNames>
-      <RefTableId>16447</RefTableId>
-      <RefColPositions>1</RefColPositions>
-      <RefTableName>image_groups</RefTableName>
-      <RefKeyName>image_groups_pk</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="95" parent="44" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>753</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="96" parent="44" name="property_group_id">
-      <Position>2</Position>
-      <DataType>integer|0s</DataType>
-      <StateNumber>754</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="97" parent="44" name="image_group_id">
-      <Position>3</Position>
-      <DataType>integer|0s</DataType>
-      <StateNumber>755</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="98" parent="44" name="inference_settings">
-      <Position>4</Position>
-      <DataType>text|0s</DataType>
-      <StateNumber>756</StateNumber>
-      <TypeId>25</TypeId>
-    </column>
-    <column id="99" parent="44" name="created_date">
-      <Position>5</Position>
-      <DataType>timestamp|0s</DataType>
-      <StateNumber>770</StateNumber>
-      <TypeId>1114</TypeId>
-    </column>
-    <index id="100" parent="44" name="input_groups_id_uindex">
-      <ObjectId>16577</ObjectId>
-      <StateNumber>757</StateNumber>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-      <CollationIds>0</CollationIds>
-      <ClassIds>1978</ClassIds>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <index id="101" parent="44" name="input_groups_pk">
-      <ObjectId>16578</ObjectId>
-      <StateNumber>758</StateNumber>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-      <Primary>1</Primary>
-      <CollationIds>0</CollationIds>
-      <ClassIds>1978</ClassIds>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="102" parent="44" name="input_groups_pk">
-      <ObjectId>16579</ObjectId>
-      <StateNumber>758</StateNumber>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>input_groups_pk</UnderlyingIndexName>
-    </key>
-    <foreign-key id="103" parent="44" name="property_group_id">
-      <ObjectId>16580</ObjectId>
-      <StateNumber>762</StateNumber>
-      <ColNames>property_group_id</ColNames>
-      <RefTableId>16540</RefTableId>
-      <RefColPositions>1</RefColPositions>
-      <RefTableName>property_groups</RefTableName>
-      <RefKeyName>property_groups_pk</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="104" parent="44" name="image_group_id">
-      <ObjectId>16585</ObjectId>
-      <StateNumber>766</StateNumber>
-      <ColNames>image_group_id</ColNames>
-      <RefTableId>16447</RefTableId>
-      <RefColPositions>1</RefColPositions>
-      <RefTableName>image_groups</RefTableName>
-      <RefKeyName>image_groups_pk</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="105" parent="45" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>704</StateNumber>
-      <DefaultExpression>nextval(&apos;models_id_seq&apos;::regclass)</DefaultExpression>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="106" parent="45" name="type">
-      <Position>2</Position>
-      <DataType>text|0s</DataType>
-      <StateNumber>662</StateNumber>
-      <TypeId>25</TypeId>
-    </column>
-    <column id="107" parent="45" name="name">
-      <Position>3</Position>
-      <DataType>text|0s</DataType>
-      <StateNumber>672</StateNumber>
-      <TypeId>25</TypeId>
-    </column>
-    <index id="108" parent="45" name="models_pk">
-      <ObjectId>16528</ObjectId>
-      <StateNumber>703</StateNumber>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-      <Primary>1</Primary>
-      <CollationIds>0</CollationIds>
-      <ClassIds>1978</ClassIds>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="109" parent="45" name="models_pk">
-      <ObjectId>16529</ObjectId>
-      <StateNumber>703</StateNumber>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>models_pk</UnderlyingIndexName>
-    </key>
-    <column id="110" parent="46" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
       <DefaultExpression>nextval(&apos;output_groups_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="111" parent="46" name="annotation_group_id">
+    <column id="78" parent="42" name="annotation_group_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>567</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="112" parent="46" name="image_group_id">
+    <column id="79" parent="42" name="image_group_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>577</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="113" parent="46" name="output_groups_pk">
+    <index id="80" parent="42" name="output_groups_pk">
       <ObjectId>16443</ObjectId>
       <StateNumber>561</StateNumber>
       <ColNames>id</ColNames>
@@ -1572,14 +1321,24 @@ sequence|table|16538|16540|1
       <ClassIds>1978</ClassIds>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="114" parent="46" name="output_groups_pk">
+    <key id="81" parent="42" name="output_groups_pk">
       <ObjectId>16444</ObjectId>
       <StateNumber>561</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>output_groups_pk</UnderlyingIndexName>
     </key>
-    <foreign-key id="115" parent="46" name="fk_annotation_group_id">
+    <foreign-key id="82" parent="42" name="fk_image_group_id">
+      <ObjectId>16457</ObjectId>
+      <StateNumber>581</StateNumber>
+      <ColNames>image_group_id</ColNames>
+      <RefTableId>16447</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>image_groups</RefTableName>
+      <RefKeyName>image_groups_pk</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="83" parent="42" name="fk_annotation_group_id">
       <ObjectId>16462</ObjectId>
       <StateNumber>585</StateNumber>
       <ColNames>annotation_group_id</ColNames>
@@ -1589,9 +1348,251 @@ sequence|table|16538|16540|1
       <RefKeyName>annotation_groups_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="116" parent="46" name="fk_image_group_id">
-      <ObjectId>16457</ObjectId>
-      <StateNumber>581</StateNumber>
+    <column id="84" parent="43" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>571</StateNumber>
+      <DefaultExpression>nextval(&apos;image_groups_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="85" parent="43" name="output_group_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>571</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="86" parent="43" name="name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>571</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="87" parent="43" name="num_images">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>774</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="88" parent="43" name="image_groups_pk">
+      <ObjectId>16455</ObjectId>
+      <StateNumber>571</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <CollationIds>0</CollationIds>
+      <ClassIds>1978</ClassIds>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="89" parent="43" name="image_groups_pk">
+      <ObjectId>16456</ObjectId>
+      <StateNumber>571</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>image_groups_pk</UnderlyingIndexName>
+    </key>
+    <foreign-key id="90" parent="43" name="fk_output_group_id">
+      <ObjectId>16472</ObjectId>
+      <StateNumber>604</StateNumber>
+      <ColNames>output_group_id</ColNames>
+      <RefTableId>16439</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>output_groups</RefTableName>
+      <RefKeyName>output_groups_pk</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="91" parent="44" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>608</StateNumber>
+      <DefaultExpression>nextval(&apos;images_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="92" parent="44" name="property_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>632</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="93" parent="44" name="image_group_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>636</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="94" parent="44" name="filename">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>608</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="95" parent="44" name="image">
+      <Position>5</Position>
+      <DataType>oid|0s</DataType>
+      <StateNumber>640</StateNumber>
+      <TypeId>26</TypeId>
+    </column>
+    <column id="96" parent="44" name="extension_type">
+      <Position>6</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>644</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <index id="97" parent="44" name="images_pk">
+      <ObjectId>16486</ObjectId>
+      <StateNumber>608</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <CollationIds>0</CollationIds>
+      <ClassIds>1978</ClassIds>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="98" parent="44" name="images_image_uindex">
+      <ObjectId>16490</ObjectId>
+      <StateNumber>653</StateNumber>
+      <ColNames>image</ColNames>
+      <Unique>1</Unique>
+      <CollationIds>0</CollationIds>
+      <ClassIds>1981</ClassIds>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="99" parent="44" name="images_pk">
+      <ObjectId>16487</ObjectId>
+      <StateNumber>608</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>images_pk</UnderlyingIndexName>
+    </key>
+    <foreign-key id="100" parent="44" name="image_group_id">
+      <ObjectId>16561</ObjectId>
+      <StateNumber>741</StateNumber>
+      <ColNames>image_group_id</ColNames>
+      <RefTableId>16447</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>image_groups</RefTableName>
+      <RefKeyName>image_groups_pk</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="101" parent="44" name="property_id">
+      <ObjectId>16566</ObjectId>
+      <StateNumber>745</StateNumber>
+      <ColNames>property_id</ColNames>
+      <RefTableId>16499</RefTableId>
+      <RefColPositions>10</RefColPositions>
+      <RefTableName>properties</RefTableName>
+      <RefKeyName>properties_pk</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="102" parent="45" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>704</StateNumber>
+      <DefaultExpression>nextval(&apos;models_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="103" parent="45" name="type">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>662</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="104" parent="45" name="name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>672</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <index id="105" parent="45" name="models_pk">
+      <ObjectId>16528</ObjectId>
+      <StateNumber>703</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <CollationIds>0</CollationIds>
+      <ClassIds>1978</ClassIds>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="106" parent="45" name="models_pk">
+      <ObjectId>16529</ObjectId>
+      <StateNumber>703</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>models_pk</UnderlyingIndexName>
+    </key>
+    <column id="107" parent="46" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>709</StateNumber>
+      <DefaultExpression>nextval(&apos;property_groups_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="108" parent="46" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>709</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="109" parent="46" name="upload_date">
+      <Position>3</Position>
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>709</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="110" parent="46" name="towns">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>709</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="111" parent="46" name="image_group_id">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>778</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="112" parent="46" name="property_groups_id_uindex">
+      <ObjectId>16547</ObjectId>
+      <StateNumber>710</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <CollationIds>0</CollationIds>
+      <ClassIds>1978</ClassIds>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="113" parent="46" name="property_groups_upload_date_uindex">
+      <ObjectId>16548</ObjectId>
+      <StateNumber>711</StateNumber>
+      <ColNames>upload_date</ColNames>
+      <Unique>1</Unique>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3128</ClassIds>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="114" parent="46" name="property_groups_pk">
+      <ObjectId>16549</ObjectId>
+      <StateNumber>712</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <CollationIds>0</CollationIds>
+      <ClassIds>1978</ClassIds>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="115" parent="46" name="property_groups_pk">
+      <ObjectId>16550</ObjectId>
+      <StateNumber>712</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>property_groups_pk</UnderlyingIndexName>
+    </key>
+    <foreign-key id="116" parent="46" name="image_group_id">
+      <ObjectId>16590</ObjectId>
+      <StateNumber>782</StateNumber>
       <ColNames>image_group_id</ColNames>
       <RefTableId>16447</RefTableId>
       <RefColPositions>1</RefColPositions>
@@ -1682,47 +1683,45 @@ sequence|table|16538|16540|1
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>709</StateNumber>
-      <DefaultExpression>nextval(&apos;property_groups_id_seq&apos;::regclass)</DefaultExpression>
+      <StateNumber>753</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="130" parent="48" name="name">
+    <column id="130" parent="48" name="property_group_id">
       <Position>2</Position>
-      <DataType>text|0s</DataType>
-      <StateNumber>709</StateNumber>
-      <TypeId>25</TypeId>
+      <DataType>integer|0s</DataType>
+      <StateNumber>754</StateNumber>
+      <TypeId>23</TypeId>
     </column>
-    <column id="131" parent="48" name="upload_date">
+    <column id="131" parent="48" name="image_group_id">
       <Position>3</Position>
-      <DataType>timestamp|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>709</StateNumber>
-      <TypeId>1114</TypeId>
+      <DataType>integer|0s</DataType>
+      <StateNumber>755</StateNumber>
+      <TypeId>23</TypeId>
     </column>
-    <column id="132" parent="48" name="towns">
+    <column id="132" parent="48" name="inference_settings">
       <Position>4</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>709</StateNumber>
+      <StateNumber>756</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="133" parent="48" name="image_group_id">
+    <column id="133" parent="48" name="created_date">
       <Position>5</Position>
-      <DataType>integer|0s</DataType>
-      <StateNumber>778</StateNumber>
-      <TypeId>23</TypeId>
+      <DataType>timestamp|0s</DataType>
+      <StateNumber>770</StateNumber>
+      <TypeId>1114</TypeId>
     </column>
-    <index id="134" parent="48" name="property_groups_id_uindex">
-      <ObjectId>16547</ObjectId>
-      <StateNumber>710</StateNumber>
+    <index id="134" parent="48" name="input_groups_id_uindex">
+      <ObjectId>16577</ObjectId>
+      <StateNumber>757</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="135" parent="48" name="property_groups_pk">
-      <ObjectId>16549</ObjectId>
-      <StateNumber>712</StateNumber>
+    <index id="135" parent="48" name="input_groups_pk">
+      <ObjectId>16578</ObjectId>
+      <StateNumber>758</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
@@ -1730,25 +1729,26 @@ sequence|table|16538|16540|1
       <ClassIds>1978</ClassIds>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="136" parent="48" name="property_groups_upload_date_uindex">
-      <ObjectId>16548</ObjectId>
-      <StateNumber>711</StateNumber>
-      <ColNames>upload_date</ColNames>
-      <Unique>1</Unique>
-      <CollationIds>0</CollationIds>
-      <ClassIds>3128</ClassIds>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="137" parent="48" name="property_groups_pk">
-      <ObjectId>16550</ObjectId>
-      <StateNumber>712</StateNumber>
+    <key id="136" parent="48" name="input_groups_pk">
+      <ObjectId>16579</ObjectId>
+      <StateNumber>758</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
-      <UnderlyingIndexName>property_groups_pk</UnderlyingIndexName>
+      <UnderlyingIndexName>input_groups_pk</UnderlyingIndexName>
     </key>
+    <foreign-key id="137" parent="48" name="property_group_id">
+      <ObjectId>16580</ObjectId>
+      <StateNumber>762</StateNumber>
+      <ColNames>property_group_id</ColNames>
+      <RefTableId>16540</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>property_groups</RefTableName>
+      <RefKeyName>property_groups_pk</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
     <foreign-key id="138" parent="48" name="image_group_id">
-      <ObjectId>16590</ObjectId>
-      <StateNumber>782</StateNumber>
+      <ObjectId>16585</ObjectId>
+      <StateNumber>766</StateNumber>
       <ColNames>image_group_id</ColNames>
       <RefTableId>16447</RefTableId>
       <RefColPositions>1</RefColPositions>
